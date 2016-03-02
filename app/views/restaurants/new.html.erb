@@ -7,12 +7,9 @@
 <%= x.text_field :description %>
 <br/>
 <%= x.label :rating %>
-  <% 5.times do |q| %>
-    <%= x.label :rating, q+1 %>
-    <%= x.radio_button(:rating, q+1) %>
-  <% end %>
-  <br/>
-  <%= x.submit :add %>
+<%= x.select :rating, (1..5) %>
+
+<%= x.submit :add %>
 <% end %>
 
 <%= link_to 'Back', restaurants_path %>

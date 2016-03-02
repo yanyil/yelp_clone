@@ -24,6 +24,7 @@
         <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant),
                               method: :delete,
                               data: { confirm: 'Are you sure about deleting?'} %>
+        <%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
       </td>
     </tr>
     <% end %>

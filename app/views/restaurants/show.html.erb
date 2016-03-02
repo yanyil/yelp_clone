@@ -1,5 +1,11 @@
 <h1><%= @restaurant.name %></h1>
 <p><%= @restaurant.description %></p>
 Rating: <%= @restaurant.rating %>
+<% @restaurant.reviews.each do |review| %>
+  <ul>
+    <li><%= review.thoughts %></li>
+    <li><%= review.rating %></li>
+  </ul>
+<% end %>
 
 <%= link_to 'Back', restaurants_path %>

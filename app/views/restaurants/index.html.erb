@@ -1,3 +1,31 @@
-No restaurants yet!
+<h1>All of our Restaurants</h1>
 
-<a href="/restaurants/new">Add a restaurant</a>
+<%= link_to 'Add a restaurant', new_restaurant_path %>
+
+<% if @restaurants.empty?  %>
+  <h3>No restaurants yet!</h3>
+<% else %>
+  <table>
+    <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th></th>
+    </tr>
+
+    <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.description %></td>
+      <td><%= restaurant.rating %></td>
+      <td>
+        <%= link_to "Show #{restaurant.name}", restaurant_path(restaurant) %>
+        <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
+        <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant),
+                              method: :delete,
+                              data: { confirm: 'Are you sure about deleting?'} %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
